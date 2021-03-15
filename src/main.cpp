@@ -35,8 +35,8 @@ const char* tagtos(long long tag) {
 
 int main(const int argc, const char** argv) {
     std::string str = "import * as iris from 'iris'; iris.print(true);"; 
-    
-     
+
+
     JSRuntime* runtime = JS_NewRuntime();
    
     if (!runtime) {
@@ -53,7 +53,7 @@ int main(const int argc, const char** argv) {
     
     JS_AddModuleExport(ctx, JS_INIT_MODULE(ctx, "iris"), "iris");
 
-    JSValue result = JS_Eval(ctx, str.c_str(), str.length(), "ROOT", JS_EVAL_TYPE_MODULE);
+    JSValue result = JS_Eval(ctx, str.c_str(), str.length(), "1R12", JS_EVAL_TYPE_MODULE);
 
     if (JS_IsException(result)) {
         printf("JS err : %s\n", JS_ToCString(ctx, JS_GetException(ctx)));
@@ -65,7 +65,7 @@ int main(const int argc, const char** argv) {
         JS_FreeValue(ctx, result);
         JS_FreeValue(ctx, res);
     } else {
-        printf("val = %s : %s\n", JS_ToCString(ctx, result), tagtos(result.tag));
+        printf("%s\n", JS_ToCString(ctx, result));
     }
 
     JS_FreeValue(ctx, result);
