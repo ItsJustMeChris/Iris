@@ -32,9 +32,8 @@ const char* tagtos(long long tag) {
     }
 }
 
-
 int main(const int argc, const char** argv) {
-    std::string str = "import * as iris from 'iris'; iris.print(true);"; 
+    std::string str = "import * as iris from 'iris'; iris.writeInt(100);"; 
 
 
     JSRuntime* runtime = JS_NewRuntime();
